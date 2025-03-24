@@ -12,7 +12,7 @@ Utilisateur** creer_liste_utilisateurs(void) {
 Utilisateur* creer_utilisateur(int id) {
 	char pseudo[20];
 
-	printf("\nVeuillez saisir votre pseudo : ");
+	printf("\nVeuillez saisir votre pseudo (espaces non-autorisés) : ");
 	scanf_s("%s", &pseudo, sizeof(pseudo));
 
 	Utilisateur* utilisateur = malloc(sizeof(Utilisateur));
