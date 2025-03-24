@@ -63,6 +63,13 @@ void afficherUtilisateur(Utilisateur* user) {
 	}
 }
 
-void ajouterAmi() {
-
+Utilisateur* trouverUtilisateur(int id, Utilisateur* user) {
+	if (!user) {
+		printf("Erreur allocation");
+		return 0;
+	}
+	while (user->id != id) {
+		user = user->utilisateur_suivant;
+	}
+	return user;
 }
