@@ -52,3 +52,5 @@ void afficherUtilisateur(Utilisateur* user) {
 		user = user->utilisateur_suivant;
 	}
 }
+
+void ajouterAmi()
