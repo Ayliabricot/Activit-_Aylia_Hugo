@@ -18,7 +18,8 @@ Utilisateur* creer_utilisateur(int id) {
 	Utilisateur* utilisateur = malloc(sizeof(Utilisateur));
 	utilisateur->id = id;
 	strcpy_s(utilisateur->pseudo, 20, pseudo);
-	utilisateur->premier_ami = NULL;
+	utilisateur->utilisateur_suivant = NULL;
+	utilisateur->ami_suivant = NULL;
 	utilisateur->premier_post = NULL;
 
 	return utilisateur;
@@ -39,4 +40,13 @@ Publication* creerPublication(void) {
 	strcpy_s(nouvellePublication->texte, 1000, post);
 
 	return nouvellePublication;
+}
+
+void ajouter_utilisateur(Utilisateur* utilisateur, Utilisateur* nouveau) {
+	if (utilisateur == NULL) {
+		utilisateur = nouveau;
+	}
+	else {
+		ajouter_utilisateur(utilisateur->utilisateur_suivant, nouveau);
+	}
 }

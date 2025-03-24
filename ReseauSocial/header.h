@@ -4,8 +4,10 @@
 typedef struct {
 	int id;
 	char pseudo[20];
-	struct Utilisateur* premier_ami;
+	struct Utilisateur* utilisateur_suivant;
+	struct Utilisateur* ami_suivant;
 	struct Publication* premier_post;
+
 }Utilisateur;
 
 typedef struct {
@@ -15,5 +17,6 @@ typedef struct {
 Utilisateur** creer_liste_utilisateurs(void);
 Utilisateur* creer_utilisateur(int id);
 Publication* creerPublication(void);
+void ajouter_utilisateur(Utilisateur* utilisateur, Utilisateur* nouveau);
 
 #endif
