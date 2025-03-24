@@ -42,6 +42,16 @@ Publication* creerPublication(void) {
 	return nouvellePublication;
 }
 
+void ajouter_utilisateur(Utilisateur* utilisateur, Utilisateur* nouveau) {
+	if (utilisateur == NULL) {
+		utilisateur = nouveau;
+	}
+	else {
+		ajouter_utilisateur(utilisateur->utilisateur_suivant, nouveau);
+	}
+}
+}
+
 void afficherUtilisateur(Utilisateur* user) {
 	if (!user) {
 		printf("Erreur allocation");
