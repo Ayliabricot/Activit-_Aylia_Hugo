@@ -7,6 +7,8 @@ int main() {
 	printf("%s", post->texte);
 
 	Utilisateur* utilisateur = creer_utilisateur(1);
-	printf("%d - %s", utilisateur->id, utilisateur->pseudo);
+
+	
+	afficherUtilisateur(utilisateur);
 	return 0;
 }

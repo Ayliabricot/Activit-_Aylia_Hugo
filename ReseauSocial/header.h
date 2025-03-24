@@ -4,12 +4,14 @@
 typedef struct {
 	int id;
 	char pseudo[20];
-	struct Utilisateur* premier_ami;
+	struct Utilisateur* utilisateur_suivant;
+	struct Utilisateur* ami_suivant;
 	struct Publication* premier_post;
 }Utilisateur;
 
 typedef struct {
 	char texte[1000];
+	struct Publication* publication_suivante;
 }Publication;
 
 Utilisateur** creer_liste_utilisateurs(void);

@@ -18,7 +18,8 @@ Utilisateur* creer_utilisateur(int id) {
 	Utilisateur* utilisateur = malloc(sizeof(Utilisateur));
 	utilisateur->id = id;
 	strcpy_s(utilisateur->pseudo, 20, pseudo);
-	utilisateur->premier_ami = NULL;
+	utilisateur->utilisateur_suivant = NULL;
+	utilisateur->ami_suivant = NULL;
 	utilisateur->premier_post = NULL;
 
 	return utilisateur;
@@ -39,4 +40,15 @@ Publication* creerPublication(void) {
 	strcpy_s(nouvellePublication->texte, 1000, post);
 
 	return nouvellePublication;
+}
+
+void afficherUtilisateur(Utilisateur* user) {
+	if (!user) {
+		printf("Erreur allocation");
+		return 0;
+	}
+	while (user!=NULL) {
+		printf("%d - %s", user->id, user->pseudo);
+		user = user->utilisateur_suivant;
+	}
 }
