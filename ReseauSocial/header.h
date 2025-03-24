@@ -4,8 +4,8 @@
 typedef struct {
 	int id;
 	char pseudo[20];
-	Utilisateur* premier_ami;
-	Publication* premier_post;
+	struct Utilisateur* premier_ami;
+	struct Publication* premier_post;
 }Utilisateur;
 
 typedef struct {
