@@ -16,10 +16,11 @@ Utilisateur* creer_utilisateur(int id) {
 	scanf_s("%s", &pseudo, 20);
 
 	Utilisateur* utilisateur = malloc(sizeof(Utilisateur));
+	utilisateur->nbAmis = 0;
 	utilisateur->id = id;
 	strcpy_s(utilisateur->pseudo, 20, pseudo);
 	utilisateur->utilisateur_suivant = NULL;
-	utilisateur->ami_suivant = NULL;
+	utilisateur->amis = NULL;
 	utilisateur->premier_post = NULL;
 
 	printf("\n");

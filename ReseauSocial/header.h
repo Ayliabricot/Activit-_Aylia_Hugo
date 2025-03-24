@@ -3,9 +3,10 @@
 
 typedef struct {
 	int id;
+	int nbAmis;
 	char pseudo[20];
 	struct Utilisateur* utilisateur_suivant;
-	struct Utilisateur* ami_suivant;
+	struct Utilisateur** amis;
 	struct Publication* premier_post;
 
 }Utilisateur;
