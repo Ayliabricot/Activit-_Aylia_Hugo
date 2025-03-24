@@ -42,15 +42,15 @@ Publication* creerPublication(void) {
 	return nouvellePublication;
 }
 
-void ajouter_utilisateur(Utilisateur* utilisateur, Utilisateur* nouveau) {
-	if (utilisateur == NULL) {
-		utilisateur = nouveau;
+void ajouter_utilisateur(Utilisateur** liste, Utilisateur* nouveau) {
+	if (*liste == NULL) {
+		*liste = nouveau; 
 	}
 	else {
-		ajouter_utilisateur(utilisateur->utilisateur_suivant, nouveau);
+		ajouter_utilisateur(&(*liste)->utilisateur_suivant, nouveau); 
 	}
 }
-}
+
 
 void afficherUtilisateur(Utilisateur* user) {
 	if (!user) {
@@ -58,9 +58,11 @@ void afficherUtilisateur(Utilisateur* user) {
 		return 0;
 	}
 	while (user!=NULL) {
-		printf("%d - %s", user->id, user->pseudo);
+		printf("%d - %s\n", user->id, user->pseudo);
 		user = user->utilisateur_suivant;
 	}
 }
 
-void ajouterAmi()
+void ajouterAmi() {
+
+}

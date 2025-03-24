@@ -13,7 +13,13 @@ int main() {
 
 		if (choix == 1) {
 			nbUtilisateurs++;
-			ajouter_utilisateur(*liste, creer_utilisateur(nbUtilisateurs));
+			ajouter_utilisateur(liste, creer_utilisateur(nbUtilisateurs));
+		}
+		else if (choix == 3) {
+			afficherUtilisateur(*liste);
+				
+			
+
 		}
 	}
 	Publication* post = creerPublication();
