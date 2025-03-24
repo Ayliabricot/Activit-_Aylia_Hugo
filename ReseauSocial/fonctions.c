@@ -12,7 +12,7 @@ Utilisateur** creer_liste_utilisateurs(void) {
 Utilisateur* creer_utilisateur(int id) {
 	char pseudo[20];
 
-	printf("\nVeuillez saisir votre pseudo (espaces non-autorisés) : ");
+	printf("\nVeuillez saisir votre pseudo (espaces non-autorises) : ");
 	scanf_s("%s", &pseudo, sizeof(pseudo));
 
 	Utilisateur* utilisateur = malloc(sizeof(Utilisateur));
@@ -22,4 +22,21 @@ Utilisateur* creer_utilisateur(int id) {
 	utilisateur->premier_post = NULL;
 
 	return utilisateur;
+}
+
+Publication* creerPublication(void) {
+	char post[1000];
+
+	Publication* nouvellePublication = malloc(sizeof(Publication));
+
+	if (!nouvellePublication) {
+		printf("Erreur allocation");
+		return 0;
+	}
+
+	printf("Veuillez saisir votre commentaire : ");
+	fgets(post, sizeof(post), stdin);
+	strcpy_s(nouvellePublication->texte, 1000, post);
+
+	return nouvellePublication;
 }
