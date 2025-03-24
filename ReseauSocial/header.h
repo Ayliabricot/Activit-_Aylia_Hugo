@@ -14,6 +14,6 @@ typedef struct {
 
 Utilisateur** creer_liste_utilisateurs(void);
 Utilisateur* creer_utilisateur(int id);
-Publication* creerPublication();
+Publication* creerPublication(void);
 
 #endif
