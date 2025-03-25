@@ -95,3 +95,17 @@ Publication* chainePost(int id, Utilisateur* premier, char post[1000]) {
 
 	return newPost;
 }
+
+void affciherPost(Utilisateur* user) {
+	if (!user) {
+		printf("Erreur allocation");
+		return;
+	}
+	Publication* post = user->premier_post;
+	printf("publication de %s:\n", user->pseudo);
+	while (post) {
+		printf("%s", post->texte);
+		post = post->publication_suivante;
+
+	}
+}
