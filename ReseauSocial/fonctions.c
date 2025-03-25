@@ -73,3 +73,25 @@ Utilisateur* trouverUtilisateur(int id, Utilisateur* user) {
 	}
 	return user;
 }
+
+Publication* chainePost(int id, Utilisateur* premier, char post[1000]) {
+	if (!premier) {
+		printf("Erreur allocation");
+		return;
+	}
+	Utilisateur* user = trouverUtilisateur(id, premier);
+	if (!user) {
+		printf("Erreur allocation");
+		return ;
+	}
+	Publication* newPost = malloc(sizeof(Publication));
+	if (!newPost) {
+		printf("Erreur allocation");
+		return;
+	}
+	strcpy_s(user->premier_post, 1000, post);
+	newPost->publication_suivante = user->premier_post;
+	user->premier_post = newPost;
+
+	return newPost;
+}
