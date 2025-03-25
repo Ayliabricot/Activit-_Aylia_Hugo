@@ -22,7 +22,7 @@ int main() {
 		else if (choix == 2) {
 			system("cls");
 			afficherUtilisateur(*liste);
-			printf("\nVeuillez saisir votre id : ");
+			printf("Veuillez saisir votre id : ");
 			scanf_s("%d",&id);
 			printf("\nVeuillez saisir l'id de votre nouvel ami : ");
 			scanf_s("%d", &idAmi);
@@ -34,7 +34,7 @@ int main() {
 		else if (choix == 3) {
 			system("cls");
 			afficherUtilisateur(*liste);
-			printf("\nVeuillez saisir votre id : ");
+			printf("Veuillez saisir votre id : ");
 			scanf_s("%d", &id);
 
 			chainePost(trouverUtilisateur(id, *liste), creerPublication());
@@ -57,7 +57,7 @@ int main() {
 		else if (choix == 6) {
 			system("cls");
 			afficherUtilisateur(*liste);
-			printf("\nVeuillez saisir l'id de la personne dont vous voulez afficher les publications : ");
+			printf("Veuillez saisir l'id de la personne dont vous voulez afficher les publications : ");
 			scanf_s("%d", &id);
 
 			afficherPost(trouverUtilisateur(id, *liste));

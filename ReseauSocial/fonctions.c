@@ -60,7 +60,11 @@ void ajouter_utilisateur(Utilisateur** liste, Utilisateur* nouveau) {
 }
 
 void afficherUtilisateur(Utilisateur* user) {
-	printf("\n->Liste des utilisateurs :\n");
+	if (user == NULL) {
+		printf("Il n'y a aucun utilisateur.");
+		return;
+	}
+	printf("->Liste des utilisateurs :\n");
 	if (user==NULL) {
 		printf("Erreur allocation");
 		return;
