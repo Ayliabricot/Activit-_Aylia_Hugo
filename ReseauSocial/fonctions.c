@@ -65,5 +65,4 @@ void afficherUtilisateur(Utilisateur* user) {
 		printf("%d - %s\n", user->id, user->pseudo);
 		user = user->utilisateur_suivant;
 	}
-	printf("\n");
 }

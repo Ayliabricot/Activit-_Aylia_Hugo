@@ -13,6 +13,7 @@ typedef struct {
 
 typedef struct {
 	char texte[1000];
+	struct Publication* publication_suivante;
 }Publication;
 
 Utilisateur** creer_liste_utilisateurs(void);
