@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "header.h"
 
 Utilisateur** creer_liste_utilisateurs(void) {
@@ -84,7 +85,7 @@ Utilisateur* trouverUtilisateur(int id, Utilisateur* user) {
 
 void afficherAmis(Utilisateur* utilisateur) {
 	if (utilisateur->nbAmis == 0) {
-		printf("\nCette personne n'a pas d'amis.\n\n");
+		printf("\n%s n'a pas d'amis.\n\n",utilisateur->pseudo);
 		return;
 	}
 	printf("\n->Amis de %s:\n", utilisateur->pseudo);
@@ -118,7 +119,7 @@ void afficherPost(Utilisateur* user) {
 		return;
 	}
 	if (user->premier_post == NULL) {
-		printf("\nL'utilisateur n'a rien publie.\n\n");
+		printf("\n%s n'a rien publie.\n\n",user->pseudo);
 		return;
 	}
 	int n = 1;

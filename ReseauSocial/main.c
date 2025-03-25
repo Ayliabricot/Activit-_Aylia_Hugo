@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <windows.h>
 #include "header.h"
 
 int main() {
@@ -14,10 +15,13 @@ int main() {
 		scanf_s("%d", &choix);
 
 		if (choix == 1) {
+			system("cls");
 			nbUtilisateurs++;
 			ajouter_utilisateur(liste,creer_utilisateur(nbUtilisateurs));
 		} 
 		else if (choix == 2) {
+			system("cls");
+			afficherUtilisateur(*liste);
 			printf("\nVeuillez saisir votre id : ");
 			scanf_s("%d",&id);
 			printf("\nVeuillez saisir l'id de votre nouvel ami : ");
@@ -28,25 +32,39 @@ int main() {
 			trouverUtilisateur(id, *liste)->nbAmis++;
 		}
 		else if (choix == 3) {
+			system("cls");
+			afficherUtilisateur(*liste);
 			printf("\nVeuillez saisir votre id : ");
 			scanf_s("%d", &id);
 
 			chainePost(trouverUtilisateur(id, *liste), creerPublication());
 		}
 		else if (choix == 4) {
+			system("cls");
 			afficherUtilisateur(*liste);
+			getchar();
+			getchar();
 		}
 		else if (choix == 5) {
-			printf("\nVeuillez saisir l'id de la personne dont vous voulez afficher les amis : ");
+			system("cls");
+			afficherUtilisateur(*liste);
+			printf("Veuillez saisir l'id de la personne dont vous voulez afficher les amis : ");
 			scanf_s("%d", &id);
 			afficherAmis(trouverUtilisateur(id, *liste));
+			getchar();
+			getchar();
 		}
 		else if (choix == 6) {
+			system("cls");
+			afficherUtilisateur(*liste);
 			printf("\nVeuillez saisir l'id de la personne dont vous voulez afficher les publications : ");
 			scanf_s("%d", &id);
 
 			afficherPost(trouverUtilisateur(id, *liste));
+			getchar();
+			getchar();
 		}
+		system("cls");
 	}
 	
 	printf("\nVous avez quitte.\n");
