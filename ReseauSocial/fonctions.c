@@ -141,8 +141,8 @@ void libererMemoireUtilisateurs(Utilisateur** utilisateur) {
 		libererMemoireUtilisateurs(&(*utilisateur)->utilisateur_suivant);
 	}
 	libererMemoirePosts((*utilisateur)->premier_post);
-	free(utilisateur);
-	utilisateur = NULL;
+	free(*utilisateur);
+	*utilisateur = NULL;
 }
 
 void libererMemoirePosts(Publication* post) {
