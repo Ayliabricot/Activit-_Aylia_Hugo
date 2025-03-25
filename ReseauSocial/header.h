@@ -13,14 +13,20 @@ typedef struct {
 
 typedef struct {
 	char texte[1000];
+	Publication* publication_suivante;
 }Publication;
 
 Utilisateur** creer_liste_utilisateurs(void);
 Utilisateur* creer_utilisateur(int id);
 Publication* creerPublication(void);
+
 void ajouter_utilisateur(Utilisateur** liste, Utilisateur* nouveau);
 void afficherUtilisateur(Utilisateur* user);
 Utilisateur* trouverUtilisateur(int id, Utilisateur* user);
+
 void afficherAmis(Utilisateur* utilisateur);
+
+Publication* chainePost(int id, Utilisateur* premier, char post[1000]);
+void affciherPost(Utilisateur* user);
 
 #endif
