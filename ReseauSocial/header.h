@@ -20,5 +20,7 @@ Utilisateur* creer_utilisateur(int id);
 Publication* creerPublication(void);
 void ajouter_utilisateur(Utilisateur** liste, Utilisateur* nouveau);
 void afficherUtilisateur(Utilisateur* user);
+Utilisateur* trouverUtilisateur(int id, Utilisateur* user);
+void afficherAmis(Utilisateur* utilisateur);
 
 #endif

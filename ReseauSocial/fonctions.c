@@ -20,7 +20,7 @@ Utilisateur* creer_utilisateur(int id) {
 	utilisateur->id = id;
 	strcpy_s(utilisateur->pseudo, 20, pseudo);
 	utilisateur->utilisateur_suivant = NULL;
-	utilisateur->amis = NULL;
+	utilisateur->amis = malloc(sizeof(Utilisateur*));
 	utilisateur->premier_post = NULL;
 
 	printf("\n");
@@ -56,7 +56,7 @@ void ajouter_utilisateur(Utilisateur** liste, Utilisateur* nouveau) {
 }
 
 void afficherUtilisateur(Utilisateur* user) {
-	printf("\nListe des utilisateurs :\n");
+	printf("\n->Liste des utilisateurs :\n");
 	if (user==NULL) {
 		printf("Erreur allocation");
 		return;
@@ -64,6 +64,30 @@ void afficherUtilisateur(Utilisateur* user) {
 	while (user != NULL) {
 		printf("%d - %s\n", user->id, user->pseudo);
 		user = user->utilisateur_suivant;
+	}
+	printf("\n");
+}
+
+Utilisateur* trouverUtilisateur(int id, Utilisateur* user) {
+	if (!user) {
+		printf("Erreur allocation");
+		return 0;
+	}
+	while (user->id != id) {
+		user = user->utilisateur_suivant;
+	}
+	return user;
+}
+
+void afficherAmis(Utilisateur* utilisateur) {
+	if (utilisateur->nbAmis == 0) {
+		printf("\nCette personne n'a pas d'amis.\n\n");
+		return;
+	}
+	printf("\n->Amis de %s:\n", utilisateur->pseudo);
+	Utilisateur** listeAmis = utilisateur->amis;
+	for (int n = 0; n < utilisateur->nbAmis; n++) {
+		printf("-%s\n", listeAmis[n]->pseudo);
 	}
 	printf("\n");
 }
