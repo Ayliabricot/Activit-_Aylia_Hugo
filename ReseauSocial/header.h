@@ -13,7 +13,7 @@ typedef struct {
 
 typedef struct {
 	char texte[1000];
-	Publication* publication_suivante;
+	struct Publication* publication_suivante;
 }Publication;
 
 Utilisateur** creer_liste_utilisateurs(void);
@@ -26,7 +26,10 @@ Utilisateur* trouverUtilisateur(int id, Utilisateur* user);
 
 void afficherAmis(Utilisateur* utilisateur);
 
-Publication* chainePost(int id, Utilisateur* premier, char post[1000]);
-void affciherPost(Utilisateur* user);
+void chainePost(Utilisateur* user, Publication* newPost);
+void afficherPost(Utilisateur* user);
+
+void libererMemoireUtilisateurs(Utilisateur** utilisateur);
+void libererMemoirePosts(Publication* post);
 
 #endif

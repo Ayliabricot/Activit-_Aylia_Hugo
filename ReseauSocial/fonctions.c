@@ -38,9 +38,12 @@ Publication* creerPublication(void) {
 		return 0;
 	}
 
-	printf("Veuillez saisir votre commentaire : ");
+	printf("\nVeuillez saisir votre commentaire : ");
+	getchar();
 	fgets(post, sizeof(post), stdin);
+
 	strcpy_s(nouvellePublication->texte, 1000, post);
+	nouvellePublication->publication_suivante = NULL;
 
 	return nouvellePublication;
 }
@@ -92,38 +95,55 @@ void afficherAmis(Utilisateur* utilisateur) {
 	printf("\n");
 }
 
-Publication* chainePost(int id, Utilisateur* premier, char post[1000]) {
-	if (!premier) {
-		printf("Erreur allocation");
-		return;
-	}
-	Utilisateur* user = trouverUtilisateur(id, premier);
+void chainePost(Utilisateur* user,Publication* newPost) {
 	if (!user) {
 		printf("Erreur allocation");
 		return;
 	}
-	Publication* newPost = malloc(sizeof(Publication));
+	
 	if (!newPost) {
 		printf("Erreur allocation");
 		return;
 	}
-	strcpy_s(user->premier_post, 1000, post);
+
 	newPost->publication_suivante = user->premier_post;
 	user->premier_post = newPost;
-
-	return newPost;
+	
+	return;
 }
 
-void affciherPost(Utilisateur* user) {
+void afficherPost(Utilisateur* user) {
 	if (!user) {
 		printf("Erreur allocation");
 		return;
 	}
-	Publication* post = user->premier_post;
-	printf("publication de %s:\n", user->pseudo);
-	while (post) {
-		printf("%s", post->texte);
-		post = post->publication_suivante;
-
+	if (user->premier_post == NULL) {
+		printf("\nL'utilisateur n'a rien publie.\n\n");
+		return;
 	}
+	int n = 1;
+	Publication* post = user->premier_post;
+	printf("\n->Publications de %s:\n\n", user->pseudo);
+	while (post) {
+		printf("%d - %s\n", n,post->texte);
+		post = post->publication_suivante;
+		n++;
+	}
+}
+
+void libererMemoireUtilisateurs(Utilisateur** utilisateur) {
+	if ((*utilisateur)->utilisateur_suivant != NULL) {
+		libererMemoireUtilisateurs(&(*utilisateur)->utilisateur_suivant);
+	}
+	libererMemoirePosts((*utilisateur)->premier_post);
+	free(utilisateur);
+	utilisateur = NULL;
+}
+
+void libererMemoirePosts(Publication* post) {
+	if (post->publication_suivante != NULL) {
+		libererMemoirePosts(post->publication_suivante);
+	}
+	free(post);
+	post = NULL;
 }

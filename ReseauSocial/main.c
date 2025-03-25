@@ -9,8 +9,8 @@ int main() {
 	int idAmi;
 	Utilisateur** liste = creer_liste_utilisateurs();
 	
-	while (choix != 6) {
-		printf("---Laureenstagram---\n\n1- Nouvel utilisateur\n2- Nouvel ami\n3- Afficher la liste des utilisateurs\n4- Afficher une liste d'amis\n5- Afficher une liste de posts\n6- Quitter\n\nVotre choix : ");
+	while (choix != 7) {
+		printf("---Laureenstagram---\n\n1- Nouvel utilisateur\n2- Nouvel ami\n3- Nouveau post\n4- Afficher la liste des utilisateurs\n5- Afficher une liste d'amis\n6- Afficher une liste de posts\n7- Quitter\n\nVotre choix : ");
 		scanf_s("%d", &choix);
 
 		if (choix == 1) {
@@ -28,16 +28,32 @@ int main() {
 			trouverUtilisateur(id, *liste)->nbAmis++;
 		}
 		else if (choix == 3) {
-			afficherUtilisateur(*liste);
+			printf("\nVeuillez saisir votre id : ");
+			scanf_s("%d", &id);
+
+			chainePost(trouverUtilisateur(id, *liste), creerPublication());
 		}
 		else if (choix == 4) {
+			afficherUtilisateur(*liste);
+		}
+		else if (choix == 5) {
 			printf("\nVeuillez saisir l'id de la personne dont vous voulez afficher les amis : ");
 			scanf_s("%d", &id);
 			afficherAmis(trouverUtilisateur(id, *liste));
 		}
+		else if (choix == 6) {
+			printf("\nVeuillez saisir l'id de la personne dont vous voulez afficher les publications : ");
+			scanf_s("%d", &id);
+
+			afficherPost(trouverUtilisateur(id, *liste));
+		}
 	}
 	
 	printf("\nVous avez quitte.\n");
+
+	libererMemoireUtilisateurs(liste);
+	free(liste);
+	liste = NULL;
 
 	return 0;
 }
