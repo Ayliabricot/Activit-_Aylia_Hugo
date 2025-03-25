@@ -5,6 +5,7 @@
 int main() {
 	int nbUtilisateurs=0;
 	int choix = 1;
+	int id;
 	Utilisateur** liste = creer_liste_utilisateurs();
 
 	while (choix != 6) {
@@ -15,6 +16,10 @@ int main() {
 			nbUtilisateurs++;
 			ajouter_utilisateur(liste,creer_utilisateur(nbUtilisateurs));
 		} 
+		else if (choix == 2) {
+			printf("Veuillez saisir votre id : ");
+			scanf_s("%d",&id);
+		}
 		else if (choix == 3) {
 			afficherUtilisateur(*liste);
 		}
